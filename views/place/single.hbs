@@ -1,0 +1,15 @@
+
+<form action="/place/list">
+  <button>List of Places</button>
+</form>
+<form action="/place/create">
+  <button>Create a Place</button>
+</form>
+
+<br/>
+<h1> {{place.name}}</h1>
+<h4> {{place.type}} </h2>
+
+<form action="/place/delete/{{place._id}}" method="POST">
+  <button>Delete Place</button>
+</form>

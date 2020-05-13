@@ -1,0 +1,12 @@
+
+<form action="/place/create">
+  <button>Create a Place</button>
+</form>
+
+<h1>All Places</h1>
+{{#each places}}
+  <a href="/place/single/{{_id}}">
+    <h3> {{ name }} </h3>
+    <h5> {{ type }} </h5>
+  </a>
+{{/each}}
