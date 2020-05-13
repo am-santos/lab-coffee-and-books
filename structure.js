@@ -1,19 +1,28 @@
 /*
 CRUD Operations for Place model
 
+ROUTER
 Create
-  - GET -> DONE
-  - POST -> DONE
+  - GET
+  - POST
 
 Read
-  - Single: GET -> DONE
-  - List: GET -> DONE
+  - Single: GET
+  - List: GET
 
 Update/Edit
   - GET
   - POST
 
 Delete
-  - POST -> DONE
+  - POST
+
+
+VIEWS
+  - Create 
+  - List 
+  - Single 
+  - Update 
+
 
 */

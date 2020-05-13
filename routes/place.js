@@ -11,12 +11,15 @@ placeRouter.post('/create', (req, res, next) => {
   const name = req.body.name;
   const type = req.body.type;
 
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+
   Place.create({
     name,
-    type
+    type,
+    location: { coordinates: [latitude, longitude] }
   })
-    .then((place) => {
-      console.log('Created Place: ', place);
+    .then(() => {
       res.redirect('/place/list');
     })
     .catch((err) => {
@@ -60,11 +63,22 @@ placeRouter.get('/update/:placeId', (req, res, next) => {
 
 placeRouter.post('/update/:placeId', (req, res, next) => {
   const placeId = req.params.placeId;
-  console.log(req.body);
+
   const name = req.body.name;
   const type = req.body.type;
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
 
-  Place.findByIdAndUpdate({ _id: placeId }, { name, type })
+  Place.findByIdAndUpdate(
+    { _id: placeId },
+    {
+      name,
+      type,
+      location: {
+        coordinates: [latitude, longitude]
+      }
+    }
+  )
     .then((place) => {
       res.render('place/single', { place });
     })

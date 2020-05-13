@@ -10,6 +10,40 @@
 <h1> {{place.name}}</h1>
 <h4> {{place.type}} </h2>
 
+<div id="map-container"></div>
+
+<form action="/place/update/{{place._id}}" method="GET">
+  <button>Edit Place</button>
+</form>
+
 <form action="/place/delete/{{place._id}}" method="POST">
   <button>Delete Place</button>
 </form>
+
+<script>
+  const place = {{{ json place }}}
+
+  function initMap() {
+    const $mapContainer = document.getElementById('map-container');
+
+    const latitude = place.location.coordinates[0];
+    const longitude = place.location.coordinates[1];
+
+    console.log('latitude, longitude', latitude, longitude);
+    // Create a map at this position
+    const map = new window.google.maps.Map($mapContainer, {
+      center: { lat: 38.75, lng: -9.15},
+      zoom: 12
+    });
+
+    const marker = new window.google.maps.Marker({
+      map,
+      position: {
+        lat: latitude,
+        lng: longitude
+      }
+    });
+  }
+</script>
+
+{{> mapscript}}
